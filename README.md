@@ -74,10 +74,12 @@ SQLite, файл `music.db`. Таблицы:
 
 | Метод | URL | Описание |
 |-------|-----|----------|
-| GET | `/music/authorSongs/:name` | Песни автора |
-| GET | `/music/albumSongs/:name` | Песни альбома |
 | GET | `/music/songs/:name` | Поиск песни по названию |
-| GET | `/music/play/:id` | Редирект на YouTube |
+| GET | `/music/albums/:name` | Поиск альбома по названию |
+| GET | `/music/authors/:name` | Поиск автора по имени |
+| GET | `/music/authorAlbums/:name` | Все альбомы автора |
+| GET | `/music/albumSongs/:name` | Все песни альбома |
+| GET | `/music/authorSongs/:name` | Все песни автора |
 
 ## 🎯 Планы
 
