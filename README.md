@@ -54,6 +54,7 @@ SQLite.Music.Searcher/
 ```markdown
 git clone https://github.com/IoanGrozniy228/SQLite.Music.Searcher-JavaScript-pet-project.git
 ```
+или просто скачать ZIP с GitHub (Code → Download ZIP) и распаковать
 # Перейти в папку
 ```markdown
 cd SQLite.Music.Searcher-JavaScript-pet-project
