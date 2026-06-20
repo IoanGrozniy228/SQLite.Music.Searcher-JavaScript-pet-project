@@ -1,6 +1,87 @@
-# SQLite.Music.Searcher-JavaScript-pet-project
-Мини-проект для портфолио и изучения JS Express.
+# 🎵 Music Searcher
 
-После установки обязательно ввести npm install, иначе не заработает!
+Поисковик музыки с возможностью искать песни по автору, альбому или названию. Выдаёт сразу ссылки на YouTube и обложки альбомов.
 
-<img width="1919" height="1039" alt="image" src="https://github.com/user-attachments/assets/eac808c9-9086-417d-9ef3-ba8f716421a4" />
+<img align="center" width="1900" height="989" alt="image" src="https://github.com/user-attachments/assets/2ad7d1ff-5bee-4fe7-b862-ff0466b90daf" />
+<div align="center"> Пример страницы </div>
+
+## 🚀 Возможности
+
+- 🔍 Поиск по автору, альбому или названию песни
+- 🖼️ Отображение обложек альбомов
+- ▶️ Прямые ссылки на YouTube
+- 🎨 Тёмный современный дизайн
+- ⚡ Быстрый поиск без перезагрузки страницы
+
+## 🛠️ Технологии
+
+| Категория | Стек |
+|------|------|
+| **Бэкенд** | Node.js, Express |
+| **База данных** | SQLite, Sequelize ORM |
+| **Фронтенд** | EJS, CSS, Vanilla JS |
+| **Архитектура** | MVC (Models, Views, Controllers) + Services |
+
+## 📂 Структура проекта
+```markdown
+SQLite.Music.Searcher/
+├── server.js              # Точка входа
+├── db.js                  # Подключение к БД
+├── models/                # Модели Sequelize
+│   ├── Song.js
+│   ├── Album.js
+│   └── Author.js
+├── services/              # Бизнес-логика
+│   └── music.service.js
+├── controllers/           # Обработчики запросов
+│   └── music.controller.js
+├── routes/                # Маршруты
+│   └── music.routes.js
+├── views/                 # EJS шаблоны
+│   └── index.ejs
+└── public/                # Статика
+    ├── css/
+    │   └── style.css
+    └── js/
+        └── script.js
+```
+## ⚙️ Установка и запуск
+
+# Клонировать репозиторий
+git clone https://github.com/твой-юзернейм/music-searcher.git
+
+# Перейти в папку
+cd music-searcher
+
+# Установить зависимости
+npm install
+
+# Запустить
+npm dev run
+
+Открыть в браузере: `http://localhost:5000`
+
+## 🗄️ База данных
+
+SQLite, файл `music.db`. Таблицы:
+
+- **Authors** — авторы (имя, год начала карьеры)
+- **Albums** — альбомы (название, обложка, количество песен)
+- **Songs** — песни (название, жанр, YouTube URL, длительность)
+
+## 📡 API
+
+| Метод | URL | Описание |
+|-------|-----|----------|
+| GET | `/music/authorSongs/:name` | Песни автора |
+| GET | `/music/albumSongs/:name` | Песни альбома |
+| GET | `/music/songs/:name` | Поиск песни по названию |
+| GET | `/music/play/:id` | Редирект на YouTube |
+
+## 🎯 Планы
+
+- [ ] Добавить регистрацию и избранное
+- [ ] Загрузка своих песен
+- [ ] Поиск по жанру
+- [ ] Плеер на сайте
+
