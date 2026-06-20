@@ -50,11 +50,11 @@ SQLite.Music.Searcher/
 
 # Клонировать репозиторий
 ```markdown
-git clone https://github.com/твой-юзернейм/music-searcher.git
+git clone https://github.com/IoanGrozniy228/SQLite.Music.Searcher-JavaScript-pet-project.git
 ```
 # Перейти в папку
 ```markdown
-cd music-searcher
+cd SQLite.Music.Searcher-JavaScript-pet-project
 ```
 # Установить зависимости
 ```markdown
