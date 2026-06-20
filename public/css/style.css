@@ -27,6 +27,47 @@ h1 {
     -webkit-text-fill-color: transparent;
     background-clip: text;
 }
+.album-cover {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.album-cover img {
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 16px;
+    border: 3px solid #7c3aed;
+    box-shadow: 0 10px 40px rgba(124, 58, 237, 0.3);
+}
+
+.album-cover .album-name {
+    color: #e0e0e0;
+    font-size: 1.1em;
+    margin-top: 10px;
+}
+
+#searchType {
+    padding: 15px 20px;
+    font-size: 1em;
+    border: 2px solid #2a2a4a;
+    border-radius: 12px;
+    background: #0f0f23;
+    color: #e0e0e0;
+    outline: none;
+    cursor: pointer;
+    transition: border-color 0.3s;
+    min-width: 120px;
+}
+
+#searchType:focus {
+    border-color: #7c3aed;
+}
+
+#searchType option {
+    background: #0f0f23;
+    color: #e0e0e0;
+}
 
 .search-box {
     display: flex;

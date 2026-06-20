@@ -14,20 +14,20 @@ export const searchSong = async (name) => {
     return song;
 };
 
-export const getSongById = async (id) => {
-    const song = await Song.findByPk(id);
+export const getSongByName = async (name) => {
+    const song = await Song.findAll({ where: {name} });
     if (!song) return null;
     return song;
 };
 
-export const getAlbumById = async (id) => {
-    const album = await Album.findByPk(id);
+export const getAlbumByName = async (name) => {
+    const album = await Album.findAll({where:{name}});
     if (!album) return null;
     return album;
 };
 
-export const getAuthorById = async (id) => {
-    const author = await Author.findByPk(id);
+export const getAuthorByName = async (name) => {
+    const author = await Author.findAll({where:{name}});
     if (!author) return null;
     return author;
 };

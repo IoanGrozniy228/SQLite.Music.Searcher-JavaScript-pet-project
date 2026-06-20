@@ -13,7 +13,7 @@ export const searchApi = async (req, res) => {
 
 export const getSong = async (req, res) => {
     try {
-        const song = await musicService.getSongById(req.params.id);
+        const song = await musicService.getSongByName(req.params.name);
         if (!song) return res.status(400).json({ message: 'Cannot find the song' });
         return res.json(song);
     } catch (e) {
@@ -23,7 +23,7 @@ export const getSong = async (req, res) => {
 
 export const getAlbum = async (req, res) => {
     try {
-        const album = await musicService.getAlbumById(req.params.id);
+        const album = await musicService.getAlbumByName(req.params.name);
         if (!album) return res.status(400).json({ message: 'Cannot find the album' });
         return res.json(album);
     } catch (e) {
@@ -33,7 +33,7 @@ export const getAlbum = async (req, res) => {
 
 export const getAuthor = async (req, res) => {
     try {
-        const author = await musicService.getAuthorById(req.params.id);
+        const author = await musicService.getAuthorByName(req.params.name);
         if (!author) return res.status(400).json({ message: 'Cannot find the author' });
         return res.json(author);
     } catch (e) {
@@ -50,12 +50,13 @@ export const getAllAlbumsOfAuthor = async (req, res) => {
         res.status(500).json({ error: e.message });
     }
 };
-
+//запихнуть в ответ джсон ещё и альбом
 export const getAllSongsOfAlbum = async (req, res) => {
     try {
         const songs = await musicService.getAllSongsOfAlbumByName(req.params.name);
-        if (!songs) return res.status(400).json({ message: 'Cannot find the songs or album' });
-        return res.json(songs);
+        const album = await musicService.getAlbumByName(req.params.name);
+        if (!songs&&!album) return res.status(400).json({ message: 'Cannot find the songs or album' });
+        return res.json({ songs, album });
     } catch (e) {
         res.status(500).json({ error: e.message });
     }

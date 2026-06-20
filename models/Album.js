@@ -14,6 +14,9 @@ const Album = sequelize.define('Album', {
     },
     number_of_songs: {
         type: DataTypes.INTEGER
+    },
+    cover_url: {
+        type: DataTypes.TEXT
     }
 }, {
   tableName: 'Albums',
