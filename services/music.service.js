@@ -2,6 +2,18 @@ import Song from '../models/Song.js';
 import Album from '../models/Album.js';
 import Author from '../models/Author.js';
 
+export const getAllSongs = async () => {
+    const song = await Song.findAll();
+    if (!song) return null;
+    return song;
+};
+
+export const searchSong = async (name) => {
+    const song = await Song.findOne({where: {name}});
+    if (!song) return null;
+    return song;
+};
+
 export const getSongById = async (id) => {
     const song = await Song.findByPk(id);
     if (!song) return null;

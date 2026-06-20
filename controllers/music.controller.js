@@ -1,5 +1,16 @@
 import * as musicService from '../services/music.service.js';
 
+export const getHome = async (req, res) => {
+    const songs = await musicService.getAllSongs();
+    res.render('index', { songs });
+};
+
+export const searchApi = async (req, res) => {
+    const query = req.query.query;
+    const songs = await musicService.searchSong(query);
+    res.json(songs);
+};
+
 export const getSong = async (req, res) => {
     try {
         const song = await musicService.getSongById(req.params.id);
