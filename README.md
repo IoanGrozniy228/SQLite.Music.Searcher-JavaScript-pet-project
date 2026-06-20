@@ -74,7 +74,7 @@ SQLite, файл `music.db`. Таблицы:
 - **Albums** — альбомы (название, обложка, количество песен)
 - **Songs** — песни (название, жанр, YouTube URL, длительность)
 
-(Пока в бд есть только Michael Jackson, Queen, Guns N' Roses, Travis Scott, но будут добавлены ещё + возсожность добавить через POST)
+(Пока в бд есть только Michael Jackson, Queen, Guns N' Roses, Travis Scott, но будут добавлены ещё + возможность добавить через POST)
 ## 📡 API
 
 | Метод | URL | Описание |
