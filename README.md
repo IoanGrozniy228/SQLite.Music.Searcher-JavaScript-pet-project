@@ -49,17 +49,21 @@ SQLite.Music.Searcher/
 ## ⚙️ Установка и запуск
 
 # Клонировать репозиторий
+```markdown
 git clone https://github.com/твой-юзернейм/music-searcher.git
-
+```
 # Перейти в папку
+```markdown
 cd music-searcher
-
+```
 # Установить зависимости
+```markdown
 npm install
-
+```
 # Запустить
+```markdown
 npm dev run
-
+```
 Открыть в браузере: `http://localhost:5000`
 
 ## 🗄️ База данных
