@@ -62,7 +62,7 @@ npm install
 ```
 # Запустить
 ```markdown
-npm dev run
+npm run dev
 ```
 Открыть в браузере: `http://localhost:5000`
 
