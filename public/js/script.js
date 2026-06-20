@@ -53,7 +53,7 @@ async function search() {
                     <span>${s.genre || '-'}</span>
                 </div>
                 <div>
-                    <a href="${s.youtube_url}" target="_blank" class="listen-btn">▶ Слушать</a>
+                    <a href="${s.youtube_url}" target="_blank" class="listen-btn">▶ Play</a>
                 </div>
             </div>
         `).join('');
