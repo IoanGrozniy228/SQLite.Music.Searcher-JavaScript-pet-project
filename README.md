@@ -2,7 +2,7 @@
 
 Поисковик музыки с возможностью искать песни по автору, альбому или названию. Выдаёт сразу ссылки на YouTube и обложки альбомов.
 
-<img align="center" width="1901" height="988" alt="image" src="https://github.com/user-attachments/assets/60af93c7-af8b-4178-8b45-880b297e7878" />
+<img align="center" width="1897" height="982" alt="Снимок экрана 2026-06-21 203043" src="https://github.com/user-attachments/assets/466765f5-844c-44aa-8063-aa3d93e6d4e6" />
 <div align="center"> Пример страницы </div>
 
 
