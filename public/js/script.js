@@ -6,7 +6,7 @@ async function search() {
     
     let url;
     if (type === 'author') {
-        url = `/music/authorSongs/${query}`;
+        url = `/music/authorAlbums/${query}`;
     } else if (type === 'album') {
         url = `/music/albumSongs/${query}`;
     } else if (type === 'song') {
@@ -18,32 +18,68 @@ async function search() {
         const data = await res.json();
         
         const albumCoverDiv = document.getElementById('albumCover');
+        const artistPhotoDiv = document.getElementById('artistPhoto');
         const resultsDiv = document.getElementById('results');
         
         albumCoverDiv.innerHTML = '';
+        artistPhotoDiv.innerHTML = '';
         resultsDiv.innerHTML = '';
         
-        let songs, album;
+        let songs, albums, author;
         
         if (Array.isArray(data)) {
         songs = data;
-        album = songs[0]?.Album || null;
+        albums = songs[0]?.Album || null;
+        author = songs[0]?.Author || null;;
         } else {
         songs = data.songs || [];
-        album = Array.isArray(data.album) ? data.album[0] : data.album || null;
+        albums = Array.isArray(data.albums) ? data.albums : null;
+        author = Array.isArray(data.author) ? data.author[0] : data.author || null;
         }
         
-        if (!songs || songs.length === 0) {
-            resultsDiv.innerHTML = '<div class="no-results">Nothing was found</div>';
-            return;
-        }
+        if (type === 'album' || type === 'song') {
+            if (!songs || songs.length === 0) {
+                resultsDiv.innerHTML = '<div class="no-results">Nothing was found</div>';
+                return;
+            }
+            else {
+
+            }
+        } else if (type === 'author') {
+            if (!albums || albums.length === 0) {
+                resultsDiv.innerHTML = '<div class="no-results">Nothing was found</div>';
+                return;
+            }
+        } 
         
-        if (album && album.cover_url) {
-            albumCoverDiv.innerHTML = `
-                <img src="${album.cover_url}" alt="Album cover">
-                <p class="album-name">${album.name || ''}</p>
-                <p class="album-name">Number of songs: ${album.number_of_songs || ''}</p>
+        if (author && author.photo_url) {
+            artistPhotoDiv.innerHTML = `
+                <img src="${author.photo_url}" alt="Artist's photo">
+                <p class="album-name">${author.name || ''}</p>
+                <p class="album-name">Career started in ${author.career_start_year || ''}</p>
             `;
+        }
+
+        for (album in albums) {
+            if (albums[album] && albums[album].cover_url) {
+                albumCoverDiv.innerHTML += `
+                <img src="${albums[album].cover_url}" alt="Album cover">
+                <p class="album-name">${albums[album].name || ''}</p>
+                <p class="album-name">Number of songs: ${albums[album].number_of_songs || ''}</p>
+                <br>
+            `;
+            albumCoverDiv.innerHTML += songs.filter(s => s.id_album === albums[album].id_album).map(s => `
+            <div class="song-card">
+                <div class="song-info">
+                    <h3>${s.name}</h3>
+                    <span>${s.genre || '-'}</span>
+                </div>
+                <div>
+                    <a href="${s.youtube_url}" target="_blank" class="listen-btn">▶ Play</a>
+                </div>
+            </div>
+            `).join('');
+            }
         }
         
         resultsDiv.innerHTML = songs.map(s => `

@@ -11,6 +11,9 @@ const Author = sequelize.define('Author', {
     },
     career_start_year: {
         type: DataTypes.INTEGER
+    },
+    photo_url: {
+        type: DataTypes.TEXT
     }
 }, {
   tableName: 'Authors',
