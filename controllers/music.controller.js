@@ -44,19 +44,26 @@ export const getAuthor = async (req, res) => {
 export const getAllAlbumsOfAuthor = async (req, res) => {
     try {
         const albums = await musicService.getAllAlbumsOfAuthorByName(req.params.name);
-        if (!albums) return res.status(400).json({ message: 'Cannot find the author or albums' });
-        return res.json(albums);
+        const author = await musicService.getAuthorByName(req.params.name);
+        if (!albums&&!author) return res.status(400).json({ message: 'Cannot find the albums or author' });
+        return res.json({albums, author});
     } catch (e) {
         res.status(500).json({ error: e.message });
     }
 };
-//запихнуть в ответ джсон ещё и альбом
+
 export const getAllSongsOfAlbum = async (req, res) => {
     try {
-        const songs = await musicService.getAllSongsOfAlbumByName(req.params.name);
-        const album = await musicService.getAlbumByName(req.params.name);
-        if (!songs&&!album) return res.status(400).json({ message: 'Cannot find the songs or album' });
-        return res.json({ songs, album });
+        const albums = await musicService.getAlbumByName(req.params.name);
+        const songs = [];
+        for (const album of albums) {
+            const albumSongs = await musicService.getAllSongsOfAlbumByName(album.name);
+            if (albumSongs) {
+                songs.push(...albumSongs);
+            }
+        }
+        if (!songs&&!albums) return res.status(400).json({ message: 'Cannot find the songs or album' });
+        return res.json({ songs, albums });
     } catch (e) {
         res.status(500).json({ error: e.message });
     }
@@ -65,8 +72,9 @@ export const getAllSongsOfAlbum = async (req, res) => {
 export const getAllSongsOfAuthor = async (req, res) => {
     try {
         const songs = await musicService.getAllSongsOfAuthorByName(req.params.name);
-        if (!songs) return res.status(400).json({ message: 'Cannot find the songs, albums or author' });
-        return res.json(songs);
+        const author = await musicService.getAuthorByName(req.params.name);
+        if (!songs&&!author) return res.status(400).json({ message: 'Cannot find the songs, albums or author' });
+        return res.json({songs, author});
     } catch (e) {
         res.status(500).json({ error: e.message });
     }
