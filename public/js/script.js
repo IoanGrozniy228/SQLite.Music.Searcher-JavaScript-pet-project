@@ -53,33 +53,36 @@ async function search() {
         } 
         
         if (author && author.photo_url) {
-            artistPhotoDiv.innerHTML = `
-                <img src="${author.photo_url}" alt="Artist's photo">
-                <p class="album-name">${author.name || ''}</p>
-                <p class="album-name">Career started in ${author.career_start_year || ''}</p>
-            `;
-        }
+    artistPhotoDiv.innerHTML = `
+        <div class="artist-photo">
+            <img src="${author.photo_url}" alt="Artist's photo">
+            <p class="artist-name">${author.name || ''}</p>
+            <p class="artist-career">Career started in ${author.career_start_year || ''}</p>
+        </div>
+    `;
+}
 
         for (album in albums) {
             if (albums[album] && albums[album].cover_url) {
                 albumCoverDiv.innerHTML += `
+                <div class="album-cover">
                 <img src="${albums[album].cover_url}" alt="Album cover">
                 <p class="album-name">${albums[album].name || ''}</p>
-                <p class="album-name">Number of songs: ${albums[album].number_of_songs || ''}</p>
-                <br>
+                <p class="album-info">Number of songs: ${albums[album].number_of_songs || ''}</p>
             `;
             albumCoverDiv.innerHTML += songs.filter(s => s.id_album === albums[album].id_album).map(s => `
             <div class="song-card">
-                <div class="song-info">
-                    <h3>${s.name}</h3>
-                    <span>${s.genre || '-'}</span>
-                </div>
-                <div>
-                    <a href="${s.youtube_url}" target="_blank" class="listen-btn">▶ Play</a>
-                </div>
+            <div class="song-info">
+            <h3>${s.name}</h3>
+            <span>${s.genre || '-'}</span>
+            </div>
+            <div>
+            <a href="${s.youtube_url}" target="_blank" class="listen-btn">▶ Play</a>
+            </div>
             </div>
             `).join('');
             }
+            albumCoverDiv.innerHTML += `<br>`;
         }
         
         resultsDiv.innerHTML = songs.map(s => `
@@ -99,4 +102,8 @@ async function search() {
         document.getElementById('results').innerHTML = 
             '<div class="no-results">Error</div>';
     }
+}
+function exportToExcel() {
+
+
 }
