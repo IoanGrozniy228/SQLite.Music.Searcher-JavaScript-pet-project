@@ -80,14 +80,33 @@ SQLite, файл `music.db`. Таблицы:
 (Пока в бд есть только Michael Jackson, Queen, Guns N' Roses, Travis Scott, но будут добавлены ещё + возможность добавить через POST)
 ## 📡 API
 
+### Музыка
+
 | Метод | URL | Описание |
 |-------|-----|----------|
+| GET | `/` | Главная страница |
 | GET | `/music/songs/:name` | Поиск песни по названию |
 | GET | `/music/albums/:name` | Поиск альбома по названию |
 | GET | `/music/authors/:name` | Поиск автора по имени |
 | GET | `/music/authorAlbums/:name` | Все альбомы автора |
 | GET | `/music/albumSongs/:name` | Все песни альбома |
 | GET | `/music/authorSongs/:name` | Все песни автора |
+
+### Пользователи
+
+| Метод | URL | Описание |
+|-------|-----|----------|
+| POST | `/user/reg` | Регистрация |
+| POST | `/user/log` | Вход |
+| PUT | `/user/changeUserInfo` | Сменить логин и/или пароль |
+| PATCH | `/user/changeUserPassword` | Сменить только пароль |
+| DELETE | `/user/del` | Удалить аккаунт |
+
+### Безопасность
+
+- Rate limiting: 30 запросов / 1 минута на все маршруты
+- Rate limiting: 10 попыток / 1 минута на логин и регистрацию
+- Пароли хешируются через bcrypt
 
 ## 🎯 Планы
 
