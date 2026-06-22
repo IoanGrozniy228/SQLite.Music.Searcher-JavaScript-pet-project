@@ -9,12 +9,6 @@ export const getAllSongs = async () => {
     return song;
 };
 
-export const searchSong = async (name) => {
-    const song = await Song.findOne({where: { name: { [Op.like]: `%${name}%` } }});
-    if (!song) return null;
-    return song;
-};
-
 export const getSongByName = async (name) => {
     const song = await Song.findAll({ where: { name: { [Op.like]: `%${name}%` } } });
     if (!song) return null;
