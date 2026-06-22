@@ -30,18 +30,26 @@ SQLite.Music.Searcher/
 ├── models/                # Модели Sequelize
 │   ├── Song.js
 │   ├── Album.js
-│   └── Author.js
+│   ├── Author.js
+│   ├── User.js
+│   └── Favorite.js
 ├── services/              # Бизнес-логика
-│   └── music.service.js
+│   ├── music.service.js
+│   └── user.service.js
 ├── controllers/           # Обработчики запросов
-│   └── music.controller.js
+│   ├── music.controller.js
+│   └── user.controller.js
 ├── routes/                # Маршруты
-│   └── music.routes.js
+│   ├── music.routes.js
+│   └── user.routes.js
 ├── views/                 # EJS шаблоны
 │   └── index.ejs
 └── public/                # Статика
     ├── css/
     │   └── style.css
+    ├── img/
+    │   ├── logo.ico
+    │   └── logo.png
     └── js/
         └── script.js
 ```
